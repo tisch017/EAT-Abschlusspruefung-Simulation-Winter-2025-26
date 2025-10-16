@@ -96,6 +96,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.MotorMove = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.B20)).BeginInit();
             this.SuspendLayout();
             // 
@@ -796,9 +797,22 @@
             this.label9.TabIndex = 82;
             this.label9.Text = "Schrittweite Motor";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.IndianRed;
+            this.label10.Location = new System.Drawing.Point(683, 178);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(278, 26);
+            this.label10.TabIndex = 83;
+            this.label10.Text = "Werte Entsprechen nicht eine PT100\r\nSonder sind einfach an die SPS weiter gegeben" +
+    "";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1184, 461);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.MotorMove);
             this.Controls.Add(this.label8);
@@ -944,5 +958,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox MotorMove;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }

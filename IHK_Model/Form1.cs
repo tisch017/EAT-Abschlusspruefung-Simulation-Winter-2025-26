@@ -62,8 +62,9 @@ namespace IHK_Model
                 if (plc.OperatingState == EOperatingState.Off)
                 {
                     plc.PowerOn(10000); // Schaltet die Instanz ein (Timeout 10s)
+                    
                 }
-
+                
                 // 4. Stelle sicher, dass die SPS läuft und nicht leer ist.
                 if (plc.OperatingState != EOperatingState.Run)
                 {
@@ -397,26 +398,31 @@ namespace IHK_Model
 
         private void B20_Scroll(object sender, EventArgs e)
         {
-            // Annahme: Der Name des Schiebereglers ist "B20".
             TrackBar sensorTrackBar = (TrackBar)sender;
 
-            // 1. Den aktuellen Wert des Schiebereglers auslesen.
-            //    Wir casten ihn zu 'short', da ein SPS-Wort 16 Bit hat.
-            short sensorWert = (short)sensorTrackBar.Value;
+            // 1. Den aktuellen Wert des Schiebereglers auslesen (0 bis 27648).
+            int sensorWert = sensorTrackBar.Value;
+
+            // 2. Den Wert INVERTIEREN.
+            // Die maximale Skala für analoge Werte in TIA ist oft 27648.
+            const int maxValue = 27648;
+            int invertedWert = maxValue - sensorWert;
+
+            // 3. Den invertierten Wert in das 16-Bit-Format für die SPS umwandeln.
+            short plcValue = (short)invertedWert;
 
             try
             {
-                // 2. Den 16-Bit-Wert in ein Array aus 2 Bytes umwandeln.
-                byte[] bytesToSend = BitConverter.GetBytes(sensorWert);
+                // 4. Den 16-Bit-Wert in ein Array aus 2 Bytes umwandeln.
+                byte[] bytesToSend = BitConverter.GetBytes(plcValue);
 
-                // 3. WICHTIG: Byte-Reihenfolge für die Siemens SPS anpassen (Big-Endian).
+                // 5. Byte-Reihenfolge für die Siemens SPS anpassen (Big-Endian).
                 if (BitConverter.IsLittleEndian)
                 {
                     Array.Reverse(bytesToSend);
                 }
 
-                // 4. Die 2 Bytes an die Adresse des analogen Eingangsworts senden.
-                //    Hier wird %EW8 als Beispiel verwendet (Start-Byte-Adresse 8).
+                // 6. Die 2 Bytes an die Adresse des analogen Eingangsworts senden (Beispiel: %EW8).
                 plc.InputArea.WriteBytes(8, bytesToSend);
             }
             catch (Exception)
