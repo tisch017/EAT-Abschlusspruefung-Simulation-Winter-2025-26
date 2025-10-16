@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.S0 = new System.Windows.Forms.Button();
             this.S1_P1 = new System.Windows.Forms.Button();
             this.S2 = new System.Windows.Forms.Button();
@@ -82,10 +83,15 @@
             this.B9 = new System.Windows.Forms.Button();
             this.B10 = new System.Windows.Forms.Button();
             this.B11 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.B12 = new System.Windows.Forms.Button();
             this.B1 = new System.Windows.Forms.Button();
             this.B21 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.B3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // S0
@@ -98,10 +104,13 @@
             this.S0.TabIndex = 0;
             this.S0.Text = "S0";
             this.S0.UseVisualStyleBackColor = false;
+            this.S0.Click += new System.EventHandler(this.S0_Click);
+            this.S0.MouseDown += new System.Windows.Forms.MouseEventHandler(this.S0_MouseDown);
+            this.S0.MouseUp += new System.Windows.Forms.MouseEventHandler(this.S0_MouseUp);
             // 
             // S1_P1
             // 
-            this.S1_P1.BackColor = System.Drawing.Color.White;
+            this.S1_P1.BackColor = System.Drawing.Color.Gray;
             this.S1_P1.ForeColor = System.Drawing.Color.Black;
             this.S1_P1.Location = new System.Drawing.Point(105, 20);
             this.S1_P1.Name = "S1_P1";
@@ -109,6 +118,7 @@
             this.S1_P1.TabIndex = 1;
             this.S1_P1.Text = "S1/P1";
             this.S1_P1.UseVisualStyleBackColor = false;
+            this.S1_P1.Click += new System.EventHandler(this.S1_P1_Click);
             // 
             // S2
             // 
@@ -120,10 +130,12 @@
             this.S2.TabIndex = 2;
             this.S2.Text = "S2";
             this.S2.UseVisualStyleBackColor = false;
+            this.S2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.S2_MouseDown);
+            this.S2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.S2_MouseUp);
             // 
             // S3_P3
             // 
-            this.S3_P3.BackColor = System.Drawing.Color.White;
+            this.S3_P3.BackColor = System.Drawing.Color.Gray;
             this.S3_P3.ForeColor = System.Drawing.Color.Black;
             this.S3_P3.Location = new System.Drawing.Point(285, 20);
             this.S3_P3.Name = "S3_P3";
@@ -131,10 +143,12 @@
             this.S3_P3.TabIndex = 3;
             this.S3_P3.Text = "S3/P3";
             this.S3_P3.UseVisualStyleBackColor = false;
+            this.S3_P3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.S3_MouseDown);
+            this.S3_P3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.S3_MouseUp);
             // 
             // S4_P4
             // 
-            this.S4_P4.BackColor = System.Drawing.Color.White;
+            this.S4_P4.BackColor = System.Drawing.Color.Gray;
             this.S4_P4.ForeColor = System.Drawing.Color.Black;
             this.S4_P4.Location = new System.Drawing.Point(375, 20);
             this.S4_P4.Name = "S4_P4";
@@ -142,6 +156,8 @@
             this.S4_P4.TabIndex = 4;
             this.S4_P4.Text = "S4/P4";
             this.S4_P4.UseVisualStyleBackColor = false;
+            this.S4_P4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.S4_MouseDown);
+            this.S4_P4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.S4_MouseUp);
             // 
             // S5
             // 
@@ -153,10 +169,12 @@
             this.S5.TabIndex = 5;
             this.S5.Text = "S5";
             this.S5.UseVisualStyleBackColor = false;
+            this.S5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.S5_MouseDown);
+            this.S5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.S5_MouseUp);
             // 
             // S6_P6
             // 
-            this.S6_P6.BackColor = System.Drawing.Color.White;
+            this.S6_P6.BackColor = System.Drawing.Color.Gray;
             this.S6_P6.ForeColor = System.Drawing.Color.Black;
             this.S6_P6.Location = new System.Drawing.Point(555, 20);
             this.S6_P6.Name = "S6_P6";
@@ -164,10 +182,12 @@
             this.S6_P6.TabIndex = 6;
             this.S6_P6.Text = "S6/P6";
             this.S6_P6.UseVisualStyleBackColor = false;
+            this.S6_P6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.S6_MouseDown);
+            this.S6_P6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.S6_MouseUp);
             // 
             // S7_P7
             // 
-            this.S7_P7.BackColor = System.Drawing.Color.White;
+            this.S7_P7.BackColor = System.Drawing.Color.Gray;
             this.S7_P7.ForeColor = System.Drawing.Color.Black;
             this.S7_P7.Location = new System.Drawing.Point(645, 20);
             this.S7_P7.Name = "S7_P7";
@@ -175,10 +195,12 @@
             this.S7_P7.TabIndex = 7;
             this.S7_P7.Text = "S7/P7";
             this.S7_P7.UseVisualStyleBackColor = false;
+            this.S7_P7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.S7_MouseDown);
+            this.S7_P7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.S7_MouseUp);
             // 
             // S8_P8
             // 
-            this.S8_P8.BackColor = System.Drawing.Color.White;
+            this.S8_P8.BackColor = System.Drawing.Color.Gray;
             this.S8_P8.ForeColor = System.Drawing.Color.Black;
             this.S8_P8.Location = new System.Drawing.Point(735, 20);
             this.S8_P8.Name = "S8_P8";
@@ -186,6 +208,8 @@
             this.S8_P8.TabIndex = 8;
             this.S8_P8.Text = "S8/P8";
             this.S8_P8.UseVisualStyleBackColor = false;
+            this.S8_P8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.S8_MouseDown);
+            this.S8_P8.MouseUp += new System.Windows.Forms.MouseEventHandler(this.S8_MouseUp);
             // 
             // S13_P13
             // 
@@ -197,6 +221,8 @@
             this.S13_P13.TabIndex = 9;
             this.S13_P13.Text = "S13/P13";
             this.S13_P13.UseVisualStyleBackColor = false;
+            this.S13_P13.MouseDown += new System.Windows.Forms.MouseEventHandler(this.S13_MouseDown);
+            this.S13_P13.MouseUp += new System.Windows.Forms.MouseEventHandler(this.S13_MouseUp);
             // 
             // S10
             // 
@@ -208,6 +234,8 @@
             this.S10.TabIndex = 10;
             this.S10.Text = "S10";
             this.S10.UseVisualStyleBackColor = false;
+            this.S10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.S10_MouseDown);
+            this.S10.MouseUp += new System.Windows.Forms.MouseEventHandler(this.S10_MouseUp);
             // 
             // S12_P12
             // 
@@ -223,7 +251,7 @@
             // 
             // P0
             // 
-            this.P0.BackColor = System.Drawing.Color.White;
+            this.P0.BackColor = System.Drawing.Color.Gray;
             this.P0.Enabled = false;
             this.P0.ForeColor = System.Drawing.Color.Black;
             this.P0.Location = new System.Drawing.Point(195, 120);
@@ -235,7 +263,7 @@
             // 
             // P10
             // 
-            this.P10.BackColor = System.Drawing.Color.LightYellow;
+            this.P10.BackColor = System.Drawing.Color.Gray;
             this.P10.Enabled = false;
             this.P10.ForeColor = System.Drawing.Color.Black;
             this.P10.Location = new System.Drawing.Point(285, 120);
@@ -247,7 +275,7 @@
             // 
             // P11
             // 
-            this.P11.BackColor = System.Drawing.Color.White;
+            this.P11.BackColor = System.Drawing.Color.Gray;
             this.P11.Enabled = false;
             this.P11.ForeColor = System.Drawing.Color.Black;
             this.P11.Location = new System.Drawing.Point(375, 120);
@@ -411,17 +439,18 @@
             // 
             this.F9.AutoSize = true;
             this.F9.Enabled = false;
-            this.F9.Location = new System.Drawing.Point(113, 226);
+            this.F9.Location = new System.Drawing.Point(113, 399);
             this.F9.Name = "F9";
-            this.F9.Size = new System.Drawing.Size(153, 17);
+            this.F9.Size = new System.Drawing.Size(156, 17);
             this.F9.TabIndex = 31;
-            this.F9.Text = "F9 / Bedienerschuzquittiert";
+            this.F9.Text = "F9 / Bedienerschutzquittiert";
             this.F9.UseVisualStyleBackColor = true;
             // 
             // K0
             // 
             this.K0.AutoSize = true;
-            this.K0.Location = new System.Drawing.Point(113, 250);
+            this.K0.Enabled = false;
+            this.K0.Location = new System.Drawing.Point(113, 422);
             this.K0.Name = "K0";
             this.K0.Size = new System.Drawing.Size(117, 17);
             this.K0.TabIndex = 32;
@@ -437,6 +466,7 @@
             this.F1.TabIndex = 33;
             this.F1.Text = "F1 / Motorschutz 1";
             this.F1.UseVisualStyleBackColor = true;
+            this.F1.CheckedChanged += new System.EventHandler(this.F1_CheckedChanged);
             // 
             // F2
             // 
@@ -447,16 +477,18 @@
             this.F2.TabIndex = 34;
             this.F2.Text = "F2 / Motorschutz 2";
             this.F2.UseVisualStyleBackColor = true;
+            this.F2.CheckedChanged += new System.EventHandler(this.F2_CheckedChanged);
             // 
             // B0
             // 
             this.B0.AutoSize = true;
-            this.B0.Location = new System.Drawing.Point(113, 423);
+            this.B0.Location = new System.Drawing.Point(113, 339);
             this.B0.Name = "B0";
             this.B0.Size = new System.Drawing.Size(95, 17);
             this.B0.TabIndex = 35;
             this.B0.Text = "B0 / Druck i.O";
             this.B0.UseVisualStyleBackColor = true;
+            this.B0.CheckedChanged += new System.EventHandler(this.B0_CheckedChanged);
             // 
             // Q1
             // 
@@ -491,7 +523,7 @@
             // M0
             // 
             this.M0.Enabled = false;
-            this.M0.Location = new System.Drawing.Point(214, 419);
+            this.M0.Location = new System.Drawing.Point(214, 335);
             this.M0.Name = "M0";
             this.M0.Size = new System.Drawing.Size(69, 23);
             this.M0.TabIndex = 39;
@@ -593,6 +625,8 @@
             this.B8.TabIndex = 49;
             this.B8.Text = "B8";
             this.B8.UseVisualStyleBackColor = true;
+            this.B8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B8_MouseDown);
+            this.B8.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B8_MouseUp);
             // 
             // B7
             // 
@@ -602,6 +636,8 @@
             this.B7.TabIndex = 50;
             this.B7.Text = "B7";
             this.B7.UseVisualStyleBackColor = true;
+            this.B7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B7_MouseDown);
+            this.B7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B7_MouseUp);
             // 
             // B9
             // 
@@ -611,6 +647,8 @@
             this.B9.TabIndex = 52;
             this.B9.Text = "B9";
             this.B9.UseVisualStyleBackColor = true;
+            this.B9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B9_MouseDown);
+            this.B9.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B9_MouseUp);
             // 
             // B10
             // 
@@ -620,6 +658,8 @@
             this.B10.TabIndex = 51;
             this.B10.Text = "B10";
             this.B10.UseVisualStyleBackColor = true;
+            this.B10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B10_MouseDown);
+            this.B10.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B10_MouseUp);
             // 
             // B11
             // 
@@ -629,15 +669,19 @@
             this.B11.TabIndex = 54;
             this.B11.Text = "B11";
             this.B11.UseVisualStyleBackColor = true;
+            this.B11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B11_MouseDown);
+            this.B11.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B11_MouseUp);
             // 
-            // button4
+            // B12
             // 
-            this.button4.Location = new System.Drawing.Point(1124, 314);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(46, 23);
-            this.button4.TabIndex = 53;
-            this.button4.Text = "B12";
-            this.button4.UseVisualStyleBackColor = true;
+            this.B12.Location = new System.Drawing.Point(1124, 314);
+            this.B12.Name = "B12";
+            this.B12.Size = new System.Drawing.Size(46, 23);
+            this.B12.TabIndex = 53;
+            this.B12.Text = "B12";
+            this.B12.UseVisualStyleBackColor = true;
+            this.B12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B12_MouseDown);
+            this.B12.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B12_MouseUp);
             // 
             // B1
             // 
@@ -647,6 +691,8 @@
             this.B1.TabIndex = 55;
             this.B1.Text = "B1";
             this.B1.UseVisualStyleBackColor = true;
+            this.B1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B1_MouseDown);
+            this.B1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B1_MouseUp);
             // 
             // B21
             // 
@@ -665,14 +711,60 @@
             this.label4.TabIndex = 57;
             this.label4.Text = "B21";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(16, 1);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(161, 25);
+            this.label5.TabIndex = 75;
+            this.label5.Text = "NICHT IN SPS";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(93, 116);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(106, 16);
+            this.label6.TabIndex = 76;
+            this.label6.Text = "NICHT IN SPS";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(110, 380);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(106, 16);
+            this.label7.TabIndex = 77;
+            this.label7.Text = "NICHT IN SPS";
+            // 
+            // B3
+            // 
+            this.B3.Location = new System.Drawing.Point(799, 314);
+            this.B3.Name = "B3";
+            this.B3.Size = new System.Drawing.Size(46, 23);
+            this.B3.TabIndex = 78;
+            this.B3.Text = "B3";
+            this.B3.UseVisualStyleBackColor = true;
+            this.B3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B3_MouseDown);
+            this.B3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B3_MouseUp);
+
+            // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(1402, 508);
+            this.ClientSize = new System.Drawing.Size(1184, 461);
+            this.Controls.Add(this.B3);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.B21);
             this.Controls.Add(this.B1);
             this.Controls.Add(this.B11);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.B12);
             this.Controls.Add(this.B9);
             this.Controls.Add(this.B10);
             this.Controls.Add(this.B7);
@@ -728,6 +820,7 @@
             this.Controls.Add(this.S0);
             this.Name = "Form1";
             this.Text = "Digitaler Zwilling - IHK";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -736,7 +829,6 @@
 
         #endregion
 
-        // Deklarationen aller Steuerelemente
         private System.Windows.Forms.Button S0;
         private System.Windows.Forms.Button S1_P1;
         private System.Windows.Forms.Button S2;
@@ -791,9 +883,14 @@
         private System.Windows.Forms.Button B9;
         private System.Windows.Forms.Button B10;
         private System.Windows.Forms.Button B11;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button B12;
         private System.Windows.Forms.Button B1;
         private System.Windows.Forms.TextBox B21;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button B3;
     }
 }
