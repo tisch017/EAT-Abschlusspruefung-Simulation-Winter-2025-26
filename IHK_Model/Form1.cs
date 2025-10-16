@@ -3,8 +3,10 @@ using System.Drawing;
 using System.Windows.Forms;
 using Siemens.Simatic.Simulation.Runtime; // The correct namespace from your instructions
 
+
 namespace IHK_Model
 {
+
     public partial class Form1 : Form
     {
         // The PLC instance, using the correct interface type 'IInstance'.
@@ -24,80 +26,67 @@ namespace IHK_Model
         {
             try
             {
-                // Versuche ZUERST, eine Schnittstelle zur bereits existierenden Instanz zu bekommen.
-                plc = SimulationRuntimeManager.CreateInterface("CPU_IHK");
-            }
-            catch (SimulationRuntimeException sre) when (sre.HResult == (int)ERuntimeErrorCode.DoesNotExist)
-            {
-                // Dieser Block wird ausgeführt, wenn die Instanz NICHT existiert.
-                // Also registrieren wir jetzt eine neue Instanz.
-                try
+                // 1. Suche nach der Instanz "CPU_IHK" über die korrekte Eigenschaft.
+                var allInstances = SimulationRuntimeManager.RegisteredInstanceInfo; // KORREKTUR: Dies ist eine Eigenschaft, keine Methode.
+                IInstance foundInstance = null;
+
+                foreach (var instanceInfo in allInstances)
                 {
-                    plc = SimulationRuntimeManager.RegisterInstance("CPU_IHK");
+                    if (instanceInfo.Name == "CPU_IHK")
+                    {
+                        // Instanz gefunden, erstelle eine Schnittstelle dazu.
+                        foundInstance = SimulationRuntimeManager.CreateInterface(instanceInfo.Name);
+                        break;
+                    }
+                }
 
-                    // Da die Instanz neu ist, muss der Nutzer das TIA-Projekt laden.
+                // 2. Prüfe das Ergebnis der Suche
+                if (foundInstance == null)
+                {
+                    // Wenn keine Instanz gefunden wurde, zeige eine Fehlermeldung an und beende das Programm.
                     MessageBox.Show(
-                        "Die neue virtuelle SPS-Instanz 'CPU_IHK' wurde erstellt.\n\n" +
-                        "Bitte laden Sie jetzt Ihr Projekt aus dem TIA Portal in diese Instanz.\n\n" +
-                        "Starten Sie dieses Programm danach neu.",
-                        "SPS-Programm fehlt",
+                        "Die SPS-Instanz 'CPU_IHK' wurde nicht gefunden.\n\n" +
+                        "Bitte erstellen Sie die Instanz im S7-PLCSIM Advanced Control Panel und laden Sie Ihr TIA-Projekt hinein, bevor Sie dieses Programm starten.",
+                        "Instanz nicht gefunden",
                         MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                        MessageBoxIcon.Error);
 
-                    // Wichtig: Programm hier beenden, damit der Nutzer laden kann.
                     this.Close();
                     return;
+                }
+
+                // 3. Verbindung erfolgreich, weise die gefundene Instanz der Klassenvariable zu.
+                plc = foundInstance;
+
+                // 3. Stelle sicher, dass die Instanz eingeschaltet ist
+                if (plc.OperatingState == EOperatingState.Off)
+                {
+                    plc.PowerOn(10000); // Schaltet die Instanz ein (Timeout 10s)
+                }
+
+                // 4. Stelle sicher, dass die SPS läuft und nicht leer ist.
+                if (plc.OperatingState != EOperatingState.Run)
+                {
+                    plc.Run();
+                }
+                }
+                catch (SimulationRuntimeException sre) when (sre.HResult == (int)ERuntimeErrorCode.IsEmpty)
+                {
+                    // Die Instanz wurde gefunden, aber es ist kein Programm geladen.
+                    MessageBox.Show(
+                        "Die Instanz 'CPU_IHK' wurde gefunden, ist aber leer.\n\n" +
+                        "Bitte laden Sie Ihr TIA-Projekt in die laufende Instanz und starten Sie dieses Programm neu.",
+                        "SPS-Programm fehlt",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Fehler beim Erstellen der neuen Instanz:\n\n" + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Fange alle anderen möglichen Fehler ab.
+                    MessageBox.Show("Ein Fehler ist beim Verbinden mit der SPS aufgetreten:\n\n" + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
-                    return;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ein unerwarteter Fehler ist aufgetreten:\n\n" + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-                return;
-            }
-
-            try
-            {
-                if (plc == null)
-                {
-                    // Sollte nicht passieren, aber als Sicherheitsnetz.
-                    MessageBox.Show("Konnte keine Verbindung zur Instanz 'CPU_IHK' herstellen.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.Close();
-                    return;
-                }
-
-                // Stelle sicher, dass die SPS eingeschaltet ist.
-                if (plc.OperatingState != EOperatingState.Run && plc.OperatingState != EOperatingState.Stop)
-                {
-                    plc.PowerOn(10000);
-                }
-
-                // HIER IST DIE KORREKTUR: Wir versuchen, die SPS zu starten.
-                plc.Run();
-                }
-            catch (SimulationRuntimeException sre) when (sre.HResult == (int)ERuntimeErrorCode.IsEmpty)
-            {
-                // HIER WIRD DER FEHLER ABGEFANGEN: plc.Run() ist fehlgeschlagen, weil die Instanz leer ist.
-                MessageBox.Show(
-                    "Die virtuelle SPS-Instanz 'CPU_IHK' läuft, ist aber leer.\n\n" +
-                    "Bitte laden Sie Ihr Projekt aus dem TIA Portal in diese Instanz und starten Sie dieses Programm neu.",
-                    "SPS-Programm fehlt",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Fehler beim Verbindungsaufbau oder Start der SPS:\n\n" + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-            }
-
 
                 // Initialize and start the timer for continuous I/O updates [cite: 1702, 1604]
                 updateTimer = new Timer();
@@ -111,17 +100,7 @@ namespace IHK_Model
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Crucial cleanup to shut down the simulation instance properly
-            if (plc != null)
-            {
-                try
-                {
-                    plc.Stop();
-                    plc.PowerOff();
-                    //SimulationRuntimeManager.UnregisterInstance(plc);
-                }
-                catch (Exception) { /* Ignore errors during shutdown */ }
-            }
+
         }
 
         #endregion
@@ -196,6 +175,50 @@ namespace IHK_Model
             Q1.BackColor = q1_On ? Color.LimeGreen : Color.FromKnownColor(KnownColor.Control);
             Q2.BackColor = q2_On ? Color.LimeGreen : Color.FromKnownColor(KnownColor.Control);
             Q3.BackColor = q3_On ? Color.LimeGreen : Color.FromKnownColor(KnownColor.Control);
+
+
+            // --- Position des B20-Sensors simulieren ---
+
+            // Lese den aktuellen Wert des Schiebereglers.
+            int newValue = B20.Value;
+
+            // Versuche, den Text aus der MotorMove-Textbox in eine Zahl zu konvertieren.
+            if (int.TryParse(MotorMove.Text, out int moveSpeed))
+            {
+                // Passe den Wert an, je nachdem welcher Motor läuft.
+                if (q1_On)
+                {
+                    // Bewegung nach rechts, einfache Geschwindigkeit
+                    newValue += moveSpeed;
+                }
+                if (q2_On)
+                {
+                    // Bewegung nach links, negative Geschwindigkeit
+                    newValue -= moveSpeed;
+                }
+                if (q3_On)
+                {
+                    // Bewegung nach rechts, doppelte Geschwindigkeit
+                    newValue += (moveSpeed * 2);
+                }
+            }
+
+            // Stelle sicher, dass der neue Wert innerhalb der Grenzen des Reglers bleibt.
+            if (newValue > B20.Maximum)
+            {
+                newValue = B20.Maximum;
+            }
+            if (newValue < B20.Minimum)
+            {
+                newValue = B20.Minimum;
+            }
+
+            // Setze den neuen Wert für den Schieberegler, falls er sich geändert hat.
+            if (B20.Value != newValue)
+            {
+                B20.Value = newValue;
+            }
+
         }
 
         private void UpdateCylinderOutputs()
@@ -289,8 +312,8 @@ namespace IHK_Model
 
         // --- Simulated Sensors and States ---
         private void K0_CheckedChanged(object sender, EventArgs e) => plc?.InputArea.WriteBit(1, 6, K0.Checked); // E1.6 [cite: 1054]
-        private void F1_CheckedChanged(object sender, EventArgs e) => plc?.InputArea.WriteBit(1, 6, F1.Checked); // E1.6 [cite: 1054]
-        private void F2_CheckedChanged(object sender, EventArgs e) => plc?.InputArea.WriteBit(1, 7, F2.Checked); // E1.7 [cite: 1054]
+        private void F1_CheckedChanged(object sender, EventArgs e) => plc?.InputArea.WriteBit(1, 6, !F1.Checked); // E1.6 [cite: 1054]
+        private void F2_CheckedChanged(object sender, EventArgs e) => plc?.InputArea.WriteBit(1, 7, !F2.Checked); // E1.7 [cite: 1054]
 
         private void F9_CheckedChanged(object sender, EventArgs e) => plc?.InputArea.WriteBit(0, 0, F9.Checked); // E1.7 [cite: 1054]
         private void B0_CheckedChanged(object sender, EventArgs e) => plc?.InputArea.WriteBit(4, 0, B0.Checked); // E4.0 [cite: 1054]
@@ -324,7 +347,7 @@ namespace IHK_Model
         private void S12_P12_Click(object sender, EventArgs e)
         {
             if (!NotHalt.Checked) {
-                S12_P12.BackColor = Color.LightSkyBlue;
+                S12_P12.BackColor = Color.Gray;
                 F9.Checked = true;
             }
         }
@@ -339,6 +362,67 @@ namespace IHK_Model
         {
             K0.Checked = true;
             S1_P1.BackColor = Color.White;
+        }
+
+        private void B21_TextChanged(object sender, EventArgs e)
+        {
+            // 2. Den Text aus der TextBox auslesen.
+            string temperaturText = this.B21.Text;
+
+            // 3. Den Text sicher in eine 16-Bit-Zahl (short) konvertieren.
+            //    Dies verhindert Abstürze bei ungültiger Eingabe (z.B. "abc").
+            if (short.TryParse(temperaturText, out short temperaturWert))
+            {
+                try
+                {
+                    // 4. Die 16-Bit-Zahl in ein Array aus 2 Bytes umwandeln.
+                    byte[] bytesToSend = BitConverter.GetBytes(temperaturWert);
+
+                    // 5. WICHTIG: Byte-Reihenfolge für die SPS anpassen (Big-Endian).
+                    if (BitConverter.IsLittleEndian)
+                    {
+                        Array.Reverse(bytesToSend);
+                    }
+
+                    // 6. Die 2 Bytes an die Adresse des analogen Eingangsworts (%EW64) senden.
+                    plc.InputArea.WriteBytes(6, bytesToSend);
+                }
+                catch (Exception ex)
+                {
+                    // Optional: Fehlerbehandlung, falls die Kommunikation während des Schreibens fehlschlägt.
+                    // Zum Beispiel: Console.WriteLine("Fehler beim Senden von B21: " + ex.Message);
+                }
+            }
+        }
+
+        private void B20_Scroll(object sender, EventArgs e)
+        {
+            // Annahme: Der Name des Schiebereglers ist "B20".
+            TrackBar sensorTrackBar = (TrackBar)sender;
+
+            // 1. Den aktuellen Wert des Schiebereglers auslesen.
+            //    Wir casten ihn zu 'short', da ein SPS-Wort 16 Bit hat.
+            short sensorWert = (short)sensorTrackBar.Value;
+
+            try
+            {
+                // 2. Den 16-Bit-Wert in ein Array aus 2 Bytes umwandeln.
+                byte[] bytesToSend = BitConverter.GetBytes(sensorWert);
+
+                // 3. WICHTIG: Byte-Reihenfolge für die Siemens SPS anpassen (Big-Endian).
+                if (BitConverter.IsLittleEndian)
+                {
+                    Array.Reverse(bytesToSend);
+                }
+
+                // 4. Die 2 Bytes an die Adresse des analogen Eingangsworts senden.
+                //    Hier wird %EW8 als Beispiel verwendet (Start-Byte-Adresse 8).
+                plc.InputArea.WriteBytes(8, bytesToSend);
+            }
+            catch (Exception)
+            {
+                // Fehler beim Schreiben ignorieren.
+            }
         }
     }
 }

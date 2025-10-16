@@ -92,6 +92,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.B3 = new System.Windows.Forms.Button();
+            this.B20 = new System.Windows.Forms.TrackBar();
+            this.label8 = new System.Windows.Forms.Label();
+            this.MotorMove = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.B20)).BeginInit();
             this.SuspendLayout();
             // 
             // S0
@@ -213,7 +218,8 @@
             // 
             // S13_P13
             // 
-            this.S13_P13.BackColor = System.Drawing.Color.White;
+            this.S13_P13.BackColor = System.Drawing.Color.Gray;
+            this.S13_P13.Enabled = false;
             this.S13_P13.ForeColor = System.Drawing.Color.Black;
             this.S13_P13.Location = new System.Drawing.Point(825, 20);
             this.S13_P13.Name = "S13_P13";
@@ -239,7 +245,7 @@
             // 
             // S12_P12
             // 
-            this.S12_P12.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.S12_P12.BackColor = System.Drawing.Color.Gray;
             this.S12_P12.ForeColor = System.Drawing.Color.Black;
             this.S12_P12.Location = new System.Drawing.Point(105, 120);
             this.S12_P12.Name = "S12_P12";
@@ -384,11 +390,12 @@
             // label_S13_P13
             // 
             this.label_S13_P13.AutoSize = true;
+            this.label_S13_P13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_S13_P13.Location = new System.Drawing.Point(822, 63);
             this.label_S13_P13.Name = "label_S13_P13";
-            this.label_S13_P13.Size = new System.Drawing.Size(95, 13);
+            this.label_S13_P13.Size = new System.Drawing.Size(54, 13);
             this.label_S13_P13.TabIndex = 25;
-            this.label_S13_P13.Text = "Zylinder einf./ausf.";
+            this.label_S13_P13.Text = "Reserve";
             // 
             // label_S10
             // 
@@ -700,7 +707,8 @@
             this.B21.Name = "B21";
             this.B21.Size = new System.Drawing.Size(144, 20);
             this.B21.TabIndex = 56;
-            this.B21.Text = "30";
+            this.B21.Text = "0";
+            this.B21.TextChanged += new System.EventHandler(this.B21_TextChanged);
             // 
             // label4
             // 
@@ -751,11 +759,50 @@
             this.B3.UseVisualStyleBackColor = true;
             this.B3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B3_MouseDown);
             this.B3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B3_MouseUp);
-
+            // 
+            // B20
+            // 
+            this.B20.LargeChange = 15;
+            this.B20.Location = new System.Drawing.Point(655, 263);
+            this.B20.Maximum = 27648;
+            this.B20.Name = "B20";
+            this.B20.Size = new System.Drawing.Size(463, 45);
+            this.B20.TabIndex = 79;
+            this.B20.Scroll += new System.EventHandler(this.B20_Scroll);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(655, 248);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(167, 13);
+            this.label8.TabIndex = 80;
+            this.label8.Text = "B20 (Ändert sich auch mit Q1/Q2)";
+            // 
+            // MotorMove
+            // 
+            this.MotorMove.Location = new System.Drawing.Point(1018, 207);
+            this.MotorMove.Name = "MotorMove";
+            this.MotorMove.Size = new System.Drawing.Size(100, 20);
+            this.MotorMove.TabIndex = 81;
+            this.MotorMove.Text = "150";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1018, 187);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(92, 13);
+            this.label9.TabIndex = 82;
+            this.label9.Text = "Schrittweite Motor";
             // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1184, 461);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.MotorMove);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.B20);
             this.Controls.Add(this.B3);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -822,6 +869,7 @@
             this.Text = "Digitaler Zwilling - IHK";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.B20)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -892,5 +940,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button B3;
+        private System.Windows.Forms.TrackBar B20;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox MotorMove;
+        private System.Windows.Forms.Label label9;
     }
 }
