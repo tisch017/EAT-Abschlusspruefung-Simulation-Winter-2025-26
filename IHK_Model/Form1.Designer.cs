@@ -67,6 +67,25 @@
             this.Q1 = new System.Windows.Forms.Button();
             this.Q2 = new System.Windows.Forms.Button();
             this.Q3 = new System.Windows.Forms.Button();
+            this.M0 = new System.Windows.Forms.Button();
+            this.M4_1 = new System.Windows.Forms.Button();
+            this.M4_0 = new System.Windows.Forms.Button();
+            this.M7_0 = new System.Windows.Forms.Button();
+            this.M7_1 = new System.Windows.Forms.Button();
+            this.M10_0 = new System.Windows.Forms.Button();
+            this.M10_1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.B8 = new System.Windows.Forms.Button();
+            this.B7 = new System.Windows.Forms.Button();
+            this.B9 = new System.Windows.Forms.Button();
+            this.B10 = new System.Windows.Forms.Button();
+            this.B11 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.B1 = new System.Windows.Forms.Button();
+            this.B21 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // S0
@@ -469,9 +488,205 @@
             this.Q3.Text = "Q3";
             this.Q3.UseVisualStyleBackColor = true;
             // 
+            // M0
+            // 
+            this.M0.Enabled = false;
+            this.M0.Location = new System.Drawing.Point(214, 419);
+            this.M0.Name = "M0";
+            this.M0.Size = new System.Drawing.Size(69, 23);
+            this.M0.TabIndex = 39;
+            this.M0.Text = "M0";
+            this.M0.UseVisualStyleBackColor = true;
+            // 
+            // M4_1
+            // 
+            this.M4_1.Enabled = false;
+            this.M4_1.Location = new System.Drawing.Point(655, 423);
+            this.M4_1.Name = "M4_1";
+            this.M4_1.Size = new System.Drawing.Size(75, 23);
+            this.M4_1.TabIndex = 40;
+            this.M4_1.Text = "M4_1";
+            this.M4_1.UseVisualStyleBackColor = true;
+            // 
+            // M4_0
+            // 
+            this.M4_0.Enabled = false;
+            this.M4_0.Location = new System.Drawing.Point(655, 314);
+            this.M4_0.Name = "M4_0";
+            this.M4_0.Size = new System.Drawing.Size(75, 103);
+            this.M4_0.TabIndex = 41;
+            this.M4_0.Text = "M4_0";
+            this.M4_0.UseVisualStyleBackColor = true;
+            // 
+            // M7_0
+            // 
+            this.M7_0.Enabled = false;
+            this.M7_0.Location = new System.Drawing.Point(851, 314);
+            this.M7_0.Name = "M7_0";
+            this.M7_0.Size = new System.Drawing.Size(75, 103);
+            this.M7_0.TabIndex = 43;
+            this.M7_0.Text = "M7_0";
+            this.M7_0.UseVisualStyleBackColor = true;
+            // 
+            // M7_1
+            // 
+            this.M7_1.Enabled = false;
+            this.M7_1.Location = new System.Drawing.Point(851, 423);
+            this.M7_1.Name = "M7_1";
+            this.M7_1.Size = new System.Drawing.Size(75, 23);
+            this.M7_1.TabIndex = 42;
+            this.M7_1.Text = "M7_1";
+            this.M7_1.UseVisualStyleBackColor = true;
+            // 
+            // M10_0
+            // 
+            this.M10_0.Enabled = false;
+            this.M10_0.Location = new System.Drawing.Point(1043, 314);
+            this.M10_0.Name = "M10_0";
+            this.M10_0.Size = new System.Drawing.Size(75, 103);
+            this.M10_0.TabIndex = 45;
+            this.M10_0.Text = "M10_0";
+            this.M10_0.UseVisualStyleBackColor = true;
+            // 
+            // M10_1
+            // 
+            this.M10_1.Enabled = false;
+            this.M10_1.Location = new System.Drawing.Point(1043, 423);
+            this.M10_1.Name = "M10_1";
+            this.M10_1.Size = new System.Drawing.Size(75, 23);
+            this.M10_1.TabIndex = 44;
+            this.M10_1.Text = "M10_1";
+            this.M10_1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(371, 223);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Rechts Langsam";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(372, 254);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 13);
+            this.label2.TabIndex = 47;
+            this.label2.Text = "Links Langsam";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(372, 282);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.TabIndex = 48;
+            this.label3.Text = "Rechts Schnell";
+            // 
+            // B8
+            // 
+            this.B8.Location = new System.Drawing.Point(736, 314);
+            this.B8.Name = "B8";
+            this.B8.Size = new System.Drawing.Size(46, 23);
+            this.B8.TabIndex = 49;
+            this.B8.Text = "B8";
+            this.B8.UseVisualStyleBackColor = true;
+            // 
+            // B7
+            // 
+            this.B7.Location = new System.Drawing.Point(736, 423);
+            this.B7.Name = "B7";
+            this.B7.Size = new System.Drawing.Size(46, 23);
+            this.B7.TabIndex = 50;
+            this.B7.Text = "B7";
+            this.B7.UseVisualStyleBackColor = true;
+            // 
+            // B9
+            // 
+            this.B9.Location = new System.Drawing.Point(932, 423);
+            this.B9.Name = "B9";
+            this.B9.Size = new System.Drawing.Size(46, 23);
+            this.B9.TabIndex = 52;
+            this.B9.Text = "B9";
+            this.B9.UseVisualStyleBackColor = true;
+            // 
+            // B10
+            // 
+            this.B10.Location = new System.Drawing.Point(932, 314);
+            this.B10.Name = "B10";
+            this.B10.Size = new System.Drawing.Size(46, 23);
+            this.B10.TabIndex = 51;
+            this.B10.Text = "B10";
+            this.B10.UseVisualStyleBackColor = true;
+            // 
+            // B11
+            // 
+            this.B11.Location = new System.Drawing.Point(1124, 423);
+            this.B11.Name = "B11";
+            this.B11.Size = new System.Drawing.Size(46, 23);
+            this.B11.TabIndex = 54;
+            this.B11.Text = "B11";
+            this.B11.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(1124, 314);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(46, 23);
+            this.button4.TabIndex = 53;
+            this.button4.Text = "B12";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // B1
+            // 
+            this.B1.Location = new System.Drawing.Point(603, 314);
+            this.B1.Name = "B1";
+            this.B1.Size = new System.Drawing.Size(46, 23);
+            this.B1.TabIndex = 55;
+            this.B1.Text = "B1";
+            this.B1.UseVisualStyleBackColor = true;
+            // 
+            // B21
+            // 
+            this.B21.Location = new System.Drawing.Point(655, 207);
+            this.B21.Name = "B21";
+            this.B21.Size = new System.Drawing.Size(144, 20);
+            this.B21.TabIndex = 56;
+            this.B21.Text = "30";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(655, 188);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.TabIndex = 57;
+            this.label4.Text = "B21";
+            // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(1288, 508);
+            this.ClientSize = new System.Drawing.Size(1402, 508);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.B21);
+            this.Controls.Add(this.B1);
+            this.Controls.Add(this.B11);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.B9);
+            this.Controls.Add(this.B10);
+            this.Controls.Add(this.B7);
+            this.Controls.Add(this.B8);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.M10_0);
+            this.Controls.Add(this.M10_1);
+            this.Controls.Add(this.M7_0);
+            this.Controls.Add(this.M7_1);
+            this.Controls.Add(this.M4_0);
+            this.Controls.Add(this.M4_1);
+            this.Controls.Add(this.M0);
             this.Controls.Add(this.Q3);
             this.Controls.Add(this.Q2);
             this.Controls.Add(this.Q1);
@@ -512,7 +727,8 @@
             this.Controls.Add(this.S1_P1);
             this.Controls.Add(this.S0);
             this.Name = "Form1";
-            this.Text = "Digitaler Zwilling - Schaltschranktür";
+            this.Text = "Digitaler Zwilling - IHK";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -560,5 +776,24 @@
         private System.Windows.Forms.Button Q1;
         private System.Windows.Forms.Button Q2;
         private System.Windows.Forms.Button Q3;
+        private System.Windows.Forms.Button M0;
+        private System.Windows.Forms.Button M4_1;
+        private System.Windows.Forms.Button M4_0;
+        private System.Windows.Forms.Button M7_0;
+        private System.Windows.Forms.Button M7_1;
+        private System.Windows.Forms.Button M10_0;
+        private System.Windows.Forms.Button M10_1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button B8;
+        private System.Windows.Forms.Button B7;
+        private System.Windows.Forms.Button B9;
+        private System.Windows.Forms.Button B10;
+        private System.Windows.Forms.Button B11;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button B1;
+        private System.Windows.Forms.TextBox B21;
+        private System.Windows.Forms.Label label4;
     }
 }

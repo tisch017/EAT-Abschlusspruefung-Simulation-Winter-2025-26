@@ -51,5 +51,10 @@ namespace IHK_Model
                 S12_P12.BackColor = Color.LightSkyBlue;
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
