@@ -4,6 +4,14 @@ Dieses Projekt ist eine C# WinForms-Anwendung, die als digitaler Zwilling für d
 
 ---
 
+## 🖥️ Benutzeroberfläche
+
+Die fertige Anwendung simuliert das komplette Bedienfeld und die Aktorik/Sensorik der Anlage:
+
+![Benutzeroberfläche des Digitalen Zwillings](./Bild.png)
+
+---
+
 ## 🔧 Voraussetzungen
 
 Stellen Sie sicher, dass die folgende Software installiert ist:
