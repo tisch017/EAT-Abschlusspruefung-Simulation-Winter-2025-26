@@ -464,6 +464,7 @@
             this.K0.TabIndex = 32;
             this.K0.Text = "K0 / Spannung Ein";
             this.K0.UseVisualStyleBackColor = true;
+            this.K0.CheckedChanged += new System.EventHandler(this.K0_CheckedChanged);
             // 
             // F1
             // 

@@ -312,7 +312,7 @@ namespace IHK_Model
         }
 
         // --- Simulated Sensors and States ---
-        private void K0_CheckedChanged(object sender, EventArgs e) => plc?.InputArea.WriteBit(1, 6, K0.Checked); // E1.6 [cite: 1054]
+        private void K0_CheckedChanged(object sender, EventArgs e) => plc?.InputArea.WriteBit(1, 5, K0.Checked); // E1.5 [cite: 1054]
         private void F1_CheckedChanged(object sender, EventArgs e) => plc?.InputArea.WriteBit(1, 6, !F1.Checked); // E1.6 [cite: 1054]
         private void F2_CheckedChanged(object sender, EventArgs e) => plc?.InputArea.WriteBit(1, 7, !F2.Checked); // E1.7 [cite: 1054]
 
