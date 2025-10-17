@@ -78,12 +78,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.B8 = new System.Windows.Forms.Button();
-            this.B7 = new System.Windows.Forms.Button();
-            this.B9 = new System.Windows.Forms.Button();
-            this.B10 = new System.Windows.Forms.Button();
-            this.B11 = new System.Windows.Forms.Button();
-            this.B12 = new System.Windows.Forms.Button();
+            this.B8 = new System.Windows.Forms.CheckBox();
+            this.B7 = new System.Windows.Forms.CheckBox();
+            this.B9 = new System.Windows.Forms.CheckBox();
+            this.B10 = new System.Windows.Forms.CheckBox();
+            this.B11 = new System.Windows.Forms.CheckBox();
+            this.B12 = new System.Windows.Forms.CheckBox();
             this.B1 = new System.Windows.Forms.Button();
             this.B21 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -628,69 +628,75 @@
             // 
             // B8
             // 
+            this.B8.Appearance = System.Windows.Forms.Appearance.Button;
             this.B8.Location = new System.Drawing.Point(736, 314);
             this.B8.Name = "B8";
-            this.B8.Size = new System.Drawing.Size(46, 23);
+            this.B8.Size = new System.Drawing.Size(46, 25);
             this.B8.TabIndex = 49;
             this.B8.Text = "B8";
+            this.B8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.B8.UseVisualStyleBackColor = true;
-            this.B8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B8_MouseDown);
-            this.B8.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B8_MouseUp);
+            this.B8.CheckedChanged += new System.EventHandler(this.B8_CheckedChanged);
             // 
             // B7
             // 
+            this.B7.Appearance = System.Windows.Forms.Appearance.Button;
             this.B7.Location = new System.Drawing.Point(736, 423);
             this.B7.Name = "B7";
-            this.B7.Size = new System.Drawing.Size(46, 23);
+            this.B7.Size = new System.Drawing.Size(46, 25);
             this.B7.TabIndex = 50;
             this.B7.Text = "B7";
+            this.B7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.B7.UseVisualStyleBackColor = true;
-            this.B7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B7_MouseDown);
-            this.B7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B7_MouseUp);
+            this.B7.CheckedChanged += new System.EventHandler(this.B7_CheckedChanged);
             // 
             // B9
             // 
+            this.B9.Appearance = System.Windows.Forms.Appearance.Button;
             this.B9.Location = new System.Drawing.Point(932, 423);
             this.B9.Name = "B9";
-            this.B9.Size = new System.Drawing.Size(46, 23);
+            this.B9.Size = new System.Drawing.Size(46, 25);
             this.B9.TabIndex = 52;
             this.B9.Text = "B9";
+            this.B9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.B9.UseVisualStyleBackColor = true;
-            this.B9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B9_MouseDown);
-            this.B9.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B9_MouseUp);
+            this.B9.CheckedChanged += new System.EventHandler(this.B9_CheckedChanged);
             // 
             // B10
             // 
+            this.B10.Appearance = System.Windows.Forms.Appearance.Button;
             this.B10.Location = new System.Drawing.Point(932, 314);
             this.B10.Name = "B10";
-            this.B10.Size = new System.Drawing.Size(46, 23);
+            this.B10.Size = new System.Drawing.Size(46, 25);
             this.B10.TabIndex = 51;
             this.B10.Text = "B10";
+            this.B10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.B10.UseVisualStyleBackColor = true;
-            this.B10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B10_MouseDown);
-            this.B10.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B10_MouseUp);
+            this.B10.CheckedChanged += new System.EventHandler(this.B10_CheckedChanged);
             // 
             // B11
             // 
+            this.B11.Appearance = System.Windows.Forms.Appearance.Button;
             this.B11.Location = new System.Drawing.Point(1124, 423);
             this.B11.Name = "B11";
-            this.B11.Size = new System.Drawing.Size(46, 23);
+            this.B11.Size = new System.Drawing.Size(46, 25);
             this.B11.TabIndex = 54;
             this.B11.Text = "B11";
+            this.B11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.B11.UseVisualStyleBackColor = true;
-            this.B11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B11_MouseDown);
-            this.B11.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B11_MouseUp);
+            this.B11.CheckedChanged += new System.EventHandler(this.B11_CheckedChanged);
             // 
             // B12
             // 
+            this.B12.Appearance = System.Windows.Forms.Appearance.Button;
             this.B12.Location = new System.Drawing.Point(1124, 314);
             this.B12.Name = "B12";
-            this.B12.Size = new System.Drawing.Size(46, 23);
+            this.B12.Size = new System.Drawing.Size(46, 25);
             this.B12.TabIndex = 53;
             this.B12.Text = "B12";
+            this.B12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.B12.UseVisualStyleBackColor = true;
-            this.B12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B12_MouseDown);
-            this.B12.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B12_MouseUp);
+            this.B12.CheckedChanged += new System.EventHandler(this.B12_CheckedChanged);
             // 
             // B1
             // 
@@ -941,12 +947,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button B8;
-        private System.Windows.Forms.Button B7;
-        private System.Windows.Forms.Button B9;
-        private System.Windows.Forms.Button B10;
-        private System.Windows.Forms.Button B11;
-        private System.Windows.Forms.Button B12;
+        private System.Windows.Forms.CheckBox B8;
+        private System.Windows.Forms.CheckBox B7;
+        private System.Windows.Forms.CheckBox B9;
+        private System.Windows.Forms.CheckBox B10;
+        private System.Windows.Forms.CheckBox B11;
+        private System.Windows.Forms.CheckBox B12;
         private System.Windows.Forms.Button B1;
         private System.Windows.Forms.TextBox B21;
         private System.Windows.Forms.Label label4;
