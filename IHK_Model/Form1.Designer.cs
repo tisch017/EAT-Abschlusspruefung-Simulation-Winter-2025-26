@@ -97,6 +97,7 @@
             this.MotorMove = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.info_B20 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.B20)).BeginInit();
             this.SuspendLayout();
             // 
@@ -818,9 +819,21 @@
             this.label10.Text = "Werte Entsprechen nicht eine PT100\r\nSonder sind einfach an die SPS weiter gegeben" +
     "";
             // 
+            // info_B20
+            // 
+            this.info_B20.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.info_B20.Location = new System.Drawing.Point(1124, 267);
+            this.info_B20.Name = "info_B20";
+            this.info_B20.Size = new System.Drawing.Size(48, 23);
+            this.info_B20.TabIndex = 84;
+            this.info_B20.Text = "Info";
+            this.info_B20.UseVisualStyleBackColor = false;
+            this.info_B20.Click += new System.EventHandler(this.info_B20_Click);
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1184, 461);
+            this.Controls.Add(this.info_B20);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.MotorMove);
@@ -968,5 +981,6 @@
         private System.Windows.Forms.TextBox MotorMove;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button info_B20;
     }
 }

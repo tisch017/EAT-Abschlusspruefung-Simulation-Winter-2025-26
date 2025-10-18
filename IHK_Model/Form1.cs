@@ -170,44 +170,57 @@ namespace IHK_Model
 
         private void UpdateMotorOutputs()
         {
-            // Read motor outputs
+            // Lese die Motor-Ausgänge von der SPS
             bool q1_On = plc.OutputArea.ReadBit(0, 0); // A0.0 - Band rechts langsam
             bool q2_On = plc.OutputArea.ReadBit(0, 1); // A0.1 - Band links langsam
             bool q3_On = plc.OutputArea.ReadBit(0, 2); // A0.2 - Band rechts schnell
 
-            // Update button colors to show motor status
+            // Aktualisiere die Farben der Buttons
             Q1.BackColor = q1_On ? Color.LimeGreen : Color.FromKnownColor(KnownColor.Control);
             Q2.BackColor = q2_On ? Color.LimeGreen : Color.FromKnownColor(KnownColor.Control);
             Q3.BackColor = q3_On ? Color.LimeGreen : Color.FromKnownColor(KnownColor.Control);
 
-
             // --- Position des B20-Sensors simulieren ---
 
-            // Lese den aktuellen Wert des Schiebereglers.
-            int newValue = B20.Value;
+            int currentValue = B20.Value;
+            int newValue = currentValue;
+            bool movingRight = false; // Merker, ob Bewegung nach rechts stattfindet
 
-            // Versuche, den Text aus der MotorMove-Textbox in eine Zahl zu konvertieren.
+            // Versuche, die Schrittweite aus der Textbox zu lesen
             if (int.TryParse(MotorMove.Text, out int moveSpeed))
             {
-                // Passe den Wert an, je nachdem welcher Motor läuft.
+                // Berechne die potenzielle neue Position
                 if (q1_On)
                 {
-                    // Bewegung nach rechts, einfache Geschwindigkeit
                     newValue += moveSpeed;
+                    movingRight = true;
                 }
                 if (q2_On)
                 {
-                    // Bewegung nach links, negative Geschwindigkeit
                     newValue -= moveSpeed;
+                    movingRight = false; // Bewegung nach links
                 }
                 if (q3_On)
                 {
-                    // Bewegung nach rechts, doppelte Geschwindigkeit
                     newValue += (moveSpeed * 2);
+                    movingRight = true;
                 }
             }
 
-            // Stelle sicher, dass der neue Wert innerhalb der Grenzen des Reglers bleibt.
+            // --- NEU: Rampe am Ende simulieren ---
+            const int rampThreshold = 27048;
+            const int maxValue = 27648; // Maximum des Sliders B20
+
+            // Wenn sich das Band nach rechts bewegt UND der aktuelle Wert unter dem Max. ist
+            // UND der neue Wert den Schwellenwert erreicht/überschreitet,
+            // dann setze den Wert direkt auf das Maximum.
+            if (movingRight && currentValue < maxValue && newValue >= rampThreshold)
+            {
+                newValue = maxValue;
+            }
+            // --- Ende Rampe ---
+
+            // Stelle sicher, dass der Wert innerhalb der Slider-Grenzen bleibt.
             if (newValue > B20.Maximum)
             {
                 newValue = B20.Maximum;
@@ -217,13 +230,13 @@ namespace IHK_Model
                 newValue = B20.Minimum;
             }
 
-            // Setze den neuen Wert für den Schieberegler, falls er sich geändert hat.
+            // Setze den neuen Wert für den Schieberegler und sende ihn an die SPS,
+            // falls er sich geändert hat.
             if (B20.Value != newValue)
             {
                 B20.Value = newValue;
                 SendB20ValueToPlc();
             }
-
         }
 
         private void UpdateCylinderOutputs()
@@ -246,7 +259,14 @@ namespace IHK_Model
 
             // === NEU: Zylinderausgänge steuern die Sensor-Checkboxen ===
             if (m4_0_On) B8.Checked = true;
-            if (m4_1_On) B7.Checked = true;
+            if (m4_1_On)
+            {
+                B7.Checked = true;
+                B1.Checked = false;
+                B20.Value = 600;
+                SendB20ValueToPlc();
+            }
+
 
             if (m7_0_On) B10.Checked = true;
             if (m7_1_On) B9.Checked = true;
@@ -521,6 +541,22 @@ namespace IHK_Model
             {
                 // Fehler beim Schreiben ignorieren.
             }
+        }
+
+        private void info_B20_Click(object sender, EventArgs e)
+        {
+            string infoText =
+        "⚠️ **Wichtiger Hinweis zur B20-Simulation:**\n" +
+        "Der simulierte Abstandssensor B20 (Schieberegler) spiegelt nicht das exakte Verhalten eines realen Sensors wider. Die Werte und die Bewegung sind vereinfacht. Die Schaltschwellen im SPS-Programm (EBA, PA, PM1, PM2, EBE) müssen an der realen Hardware eingemessen und angepasst werden!\n\n" +
+        "-------------------------------------\n\n" +
+        "Weitere Simulationsdetails:\n\n" +
+        "1. Zylinder M4_1 (Einfahren):\n" +
+        "   Wenn der Ausgang A4.2 (M4_1) aktiv ist, wird der Sensor B20 (Position) automatisch auf den Wert 27048 gesetzt.\n\n" +
+        "2. Förderband-Rampe:\n" +
+        "   Bewegt sich das Förderband nach rechts (Q1 oder Q3 aktiv) und der Sensor B20 erreicht oder überschreitet  600, fährt der Slider automatisch bis zum Minimalwert 0."+
+        "3. Diese enstspicht ca.2.00 cm\n";
+
+            MessageBox.Show(infoText, "Simulationshinweise", MessageBoxButtons.OK, MessageBoxIcon.Warning); // Icon auf Warning geändert
         }
     }
 }
