@@ -61,7 +61,8 @@ Bevor Sie das Projekt zum ersten Mal starten, sind zwei wichtige Schritte notwen
 
 ## 💡 Funktionsweise der Simulation
 
-Die Kommunikation zwischen der C#-Anwendung und der SPS funktioniert in zwei Richtungen:
+⚠️ **Wichtiger Hinweis zur B20-Simulation:**
+Die Simulation des Abstandssensors `B20` (Schieberegler) in dieser Anwendung spiegelt **nicht das exakte Verhalten eines realen Sensors** wider. Die Werte und die simulierte Bewegung sind vereinfacht. Die **Schaltschwellen** (Positionen wie "EBA", "PA", "PM1", "PM2", "EBE") im SPS-Programm müssen **anhand der realen Hardware eingemessen und angepasst** werden!
 
 ### Steuerung der SPS-Eingänge (GUI -> SPS)
 
