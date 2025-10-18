@@ -18,6 +18,9 @@ namespace IHK_Model
         {
             InitializeComponent();
             NotHalt.Checked = true;
+            B8.Checked = true;
+            B9.Checked = true;
+            B11.Checked = true;
         }
 
         #region PLC Connection and Shutdown
@@ -329,12 +332,21 @@ namespace IHK_Model
         private void F9_CheckedChanged(object sender, EventArgs e) => plc?.InputArea.WriteBit(0, 0, F9.Checked); // E1.7
         private void B0_CheckedChanged(object sender, EventArgs e) => plc?.InputArea.WriteBit(4, 0, B0.Checked); // E4.0
 
-        private void B1_MouseDown(object sender, MouseEventArgs e) => HandleMouseDown(4, 1); // E4.1
-        private void B1_MouseUp(object sender, MouseEventArgs e) => HandleMouseUp(4, 1);
+        // B1 CheckBox Handler ===
+        private void B1_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = B1.Checked;
+            plc?.InputArea.WriteBit(4, 1, isChecked); // E4.1
+            B1.BackColor = isChecked ? Color.LimeGreen : Color.FromKnownColor(KnownColor.Control);
+        }
 
-        private void B3_MouseDown(object sender, MouseEventArgs e) => HandleMouseDown(4, 3); // E4.3
-        private void B3_MouseUp(object sender, MouseEventArgs e) => HandleMouseUp(4, 3);
-
+        // B3 CheckBox Handler ===
+        private void B3_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = B3.Checked;
+            plc?.InputArea.WriteBit(4, 3, isChecked); // E4.3
+            B3.BackColor = isChecked ? Color.LimeGreen : Color.FromKnownColor(KnownColor.Control);
+        }
         // === EVENT HANDLER FÜR CHECKBOXEN MIT VERRIEGELUNG ===
         private void B7_CheckedChanged(object sender, EventArgs e)
         {

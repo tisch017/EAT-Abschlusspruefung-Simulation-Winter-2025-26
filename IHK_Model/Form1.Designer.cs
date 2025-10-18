@@ -84,14 +84,14 @@
             this.B10 = new System.Windows.Forms.CheckBox();
             this.B11 = new System.Windows.Forms.CheckBox();
             this.B12 = new System.Windows.Forms.CheckBox();
-            this.B1 = new System.Windows.Forms.Button();
+            this.B1 = new System.Windows.Forms.CheckBox();
             this.B21 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.B3 = new System.Windows.Forms.Button();
+            this.B3 = new System.Windows.Forms.CheckBox();
             this.B20 = new System.Windows.Forms.TrackBar();
             this.label8 = new System.Windows.Forms.Label();
             this.MotorMove = new System.Windows.Forms.TextBox();
@@ -700,14 +700,15 @@
             // 
             // B1
             // 
+            this.B1.Appearance = System.Windows.Forms.Appearance.Button;
             this.B1.Location = new System.Drawing.Point(603, 314);
             this.B1.Name = "B1";
-            this.B1.Size = new System.Drawing.Size(46, 23);
+            this.B1.Size = new System.Drawing.Size(46, 25);
             this.B1.TabIndex = 55;
             this.B1.Text = "B1";
+            this.B1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.B1.UseVisualStyleBackColor = true;
-            this.B1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B1_MouseDown);
-            this.B1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B1_MouseUp);
+            this.B1.CheckedChanged += new System.EventHandler(this.B1_CheckedChanged);
             // 
             // B21
             // 
@@ -759,14 +760,15 @@
             // 
             // B3
             // 
+            this.B3.Appearance = System.Windows.Forms.Appearance.Button;
             this.B3.Location = new System.Drawing.Point(799, 314);
             this.B3.Name = "B3";
-            this.B3.Size = new System.Drawing.Size(46, 23);
+            this.B3.Size = new System.Drawing.Size(46, 25);
             this.B3.TabIndex = 78;
             this.B3.Text = "B3";
+            this.B3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.B3.UseVisualStyleBackColor = true;
-            this.B3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.B3_MouseDown);
-            this.B3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.B3_MouseUp);
+            this.B3.CheckedChanged += new System.EventHandler(this.B3_CheckedChanged);
             // 
             // B20
             // 
@@ -953,14 +955,14 @@
         private System.Windows.Forms.CheckBox B10;
         private System.Windows.Forms.CheckBox B11;
         private System.Windows.Forms.CheckBox B12;
-        private System.Windows.Forms.Button B1;
+        private System.Windows.Forms.CheckBox B1;
         private System.Windows.Forms.TextBox B21;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button B3;
+        private System.Windows.Forms.CheckBox B3;
         private System.Windows.Forms.TrackBar B20;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox MotorMove;
