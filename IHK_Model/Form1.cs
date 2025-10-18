@@ -221,6 +221,7 @@ namespace IHK_Model
             if (B20.Value != newValue)
             {
                 B20.Value = newValue;
+                SendB20ValueToPlc();
             }
 
         }
@@ -481,13 +482,21 @@ namespace IHK_Model
 
         private void B20_Scroll(object sender, EventArgs e)
         {
-            TrackBar sensorTrackBar = (TrackBar)sender;
+            SendB20ValueToPlc(); // Ruft die Sende-Logik auf
+        }
 
-            // 1. Den aktuellen Wert des Schiebereglers auslesen (0 bis 27648).
-            int sensorWert = sensorTrackBar.Value;
+        private void SendB20ValueToPlc()
+        {
+            // Prüfen, ob die SPS-Verbindung besteht und die Simulation läuft.
+            if (plc == null || plc.OperatingState != EOperatingState.Run)
+            {
+                return;
+            }
+
+            // 1. Den aktuellen Wert des Schiebereglers auslesen.
+            int sensorWert = B20.Value;
 
             // 2. Den Wert INVERTIEREN.
-            // Die maximale Skala für analoge Werte in TIA ist oft 27648.
             const int maxValue = 27648;
             int invertedWert = maxValue - sensorWert;
 
