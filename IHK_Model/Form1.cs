@@ -294,8 +294,8 @@ namespace IHK_Model
         private void S0_MouseDown(object sender, MouseEventArgs e) { /* Not connected to PLC input per schematic */ }
         private void S0_MouseUp(object sender, MouseEventArgs e) { /* Not connected to PLC input per schematic */ }
 
-        private void S2_MouseDown(object sender, MouseEventArgs e) => HandleMouseDown(0, 1); // E0.1
-        private void S2_MouseUp(object sender, MouseEventArgs e) => HandleMouseUp(0, 1);
+        private void S2_MouseDown(object sender, MouseEventArgs e) => HandleMouseUp(0, 1); // E0.1  //Hier sind HandleMouseDown und Up getsucht da es sich um NO handelt
+        private void S2_MouseUp(object sender, MouseEventArgs e) =>  HandleMouseDown(0, 1);
 
         private void S3_MouseDown(object sender, MouseEventArgs e) => HandleMouseDown(0, 2); // E0.2
         private void S3_MouseUp(object sender, MouseEventArgs e) => HandleMouseUp(0, 2);
@@ -303,8 +303,8 @@ namespace IHK_Model
         private void S4_MouseDown(object sender, MouseEventArgs e) => HandleMouseDown(0, 3); // E0.3
         private void S4_MouseUp(object sender, MouseEventArgs e) => HandleMouseUp(0, 3);
 
-        private void S5_MouseDown(object sender, MouseEventArgs e) => HandleMouseDown(0, 4); // E0.4
-        private void S5_MouseUp(object sender, MouseEventArgs e) => HandleMouseUp(0, 4);
+        private void S5_MouseDown(object sender, MouseEventArgs e) =>  HandleMouseUp(0, 4);// E0.4  //Hier sind HandleMouseDown und Up getsucht da es sich um NO handelt
+        private void S5_MouseUp(object sender, MouseEventArgs e) => HandleMouseDown(0, 4);
 
         private void S6_MouseDown(object sender, MouseEventArgs e) => HandleMouseDown(0, 5); // E0.5
         private void S6_MouseUp(object sender, MouseEventArgs e) => HandleMouseUp(0, 5);

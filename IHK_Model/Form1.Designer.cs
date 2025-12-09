@@ -331,9 +331,9 @@
             this.label_S2.AutoSize = true;
             this.label_S2.Location = new System.Drawing.Point(192, 63);
             this.label_S2.Name = "label_S2";
-            this.label_S2.Size = new System.Drawing.Size(60, 26);
+            this.label_S2.Size = new System.Drawing.Size(82, 26);
             this.label_S2.TabIndex = 18;
-            this.label_S2.Text = "Abwahl der\r\nBetriebsart";
+            this.label_S2.Text = "Abwahl der\r\nBetriebsart (NO)";
             // 
             // label_S3_P3
             // 
@@ -358,9 +358,9 @@
             this.label_S5.AutoSize = true;
             this.label_S5.Location = new System.Drawing.Point(462, 63);
             this.label_S5.Name = "label_S5";
-            this.label_S5.Size = new System.Drawing.Size(72, 13);
+            this.label_S5.Size = new System.Drawing.Size(97, 13);
             this.label_S5.TabIndex = 21;
-            this.label_S5.Text = "Anlagenstopp";
+            this.label_S5.Text = "Anlagenstopp (NO)";
             // 
             // label_S6_P6
             // 
@@ -472,9 +472,9 @@
             this.F1.AutoSize = true;
             this.F1.Location = new System.Drawing.Point(113, 273);
             this.F1.Name = "F1";
-            this.F1.Size = new System.Drawing.Size(116, 17);
+            this.F1.Size = new System.Drawing.Size(141, 17);
             this.F1.TabIndex = 33;
-            this.F1.Text = "F1 / Motorschutz 1";
+            this.F1.Text = "F1 / Motorschutz 1 (NO)";
             this.F1.UseVisualStyleBackColor = true;
             this.F1.CheckedChanged += new System.EventHandler(this.F1_CheckedChanged);
             // 
@@ -483,9 +483,9 @@
             this.F2.AutoSize = true;
             this.F2.Location = new System.Drawing.Point(113, 296);
             this.F2.Name = "F2";
-            this.F2.Size = new System.Drawing.Size(116, 17);
+            this.F2.Size = new System.Drawing.Size(141, 17);
             this.F2.TabIndex = 34;
-            this.F2.Text = "F2 / Motorschutz 2";
+            this.F2.Text = "F2 / Motorschutz 2 (NO)";
             this.F2.UseVisualStyleBackColor = true;
             this.F2.CheckedChanged += new System.EventHandler(this.F2_CheckedChanged);
             // 
